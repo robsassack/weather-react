@@ -24,7 +24,6 @@ function App() {
   }
 
   async function getWeather(loc) {
-    setData(null);
     console.log("Calling API...")
     const key = apiKey.key;
     const response = await fetch(`https://api.openweathermap.org/data/2.5/weather?q=${loc}&appid=${key}&units=imperial`)
@@ -49,7 +48,7 @@ function App() {
         </div>
       </div>
       <div className='content'>
-        <Weather data={data} />
+        {data === null ? null : <Weather data={data} />}
       </div>
     </div>
   );
