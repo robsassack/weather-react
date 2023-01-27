@@ -55,18 +55,27 @@ i, .temp {
   font-size: 40px;
 }
 
+.form {
+  display: flex;
+  gap: 10px
+}
+
 #location {
   background-color: #ffffff00;
-  border: 1px solid white;
-  color: white;
+  border: 1px solid black;
+  color: black;
   padding: 5px 10px;
   font-weight: 500;
 }
 
+#location::placeholder {
+  color: black;
+}
+
 #submit {
   background-color: #ffffff00;
-  border: 1px solid white;
-  color: white;
+  border: 1px solid black;
+  color: black;
   border-radius: 5px;
   padding: 5px 10px;
   cursor: pointer;
@@ -75,7 +84,7 @@ i, .temp {
 
 .temp-scale-chooser {
   text-align: center;
-  border: 1px solid white;
+  border: 1px solid black;
   width: 20px;
   padding: 5px 10px;
   border-radius: 5px;
