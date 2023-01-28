@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import Weather from "./Weather";
 import apiKey from "./config";
+import { dayOrNight } from "./conversions";
 import "./App.css";
 
 function App() {
@@ -29,6 +30,33 @@ function App() {
     const response = await fetch(`https://api.openweathermap.org/data/2.5/weather?q=${loc}&appid=${key}&units=imperial`)
     const data = await response.json();
     setData(data);
+    // determine if it's day or night and set styles
+    let time = dayOrNight(Date.now(), data.sys.sunrise, data.sys.sunset);
+    time === "day" ? setDayStyles() : setNightStyles();
+  }
+
+  function setDayStyles() {
+    document.querySelector('body').style.backgroundColor = '#B0E6E8';
+    document.querySelector('body').style.transition = 'background-color 1000ms linear';
+    document.body.style.color = "#000";
+    document.querySelector('.content').style.outline = '2px solid black';
+    document.querySelector('#location').style.border = '1px solid black';
+    document.querySelector('#submit').style.border = '1px solid black';
+    document.querySelector('.temp-scale-chooser').style.borderColor = '#000';
+    document.querySelector('#location').style.color = '#000';
+    document.querySelector("#submit").style.color = "#000";
+  }
+
+  function setNightStyles() {
+    document.querySelector('body').style.backgroundColor = '#101028';
+    document.querySelector('body').style.transition = 'background-color 1000ms linear';
+    document.body.style.color = "#fff";
+    document.querySelector('.content').style.outline = '2px solid white';
+    document.querySelector('#location').style.border = '1px solid white';
+    document.querySelector('#submit').style.border = '1px solid white';
+    document.querySelector('.temp-scale-chooser').style.borderColor = '#fff';
+    document.querySelector('#location').style.color = '#fff';
+    document.querySelector("#submit").style.color = "#fff";
   }
 
   return (

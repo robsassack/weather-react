@@ -11,7 +11,7 @@ import "weather-icons/css/weather-icons.css";
 
 export default function Weather(props) {
   const [units, setUnits] = useState("imperial");
-  console.log(props.data);
+  // console.log(props.data);
   let name = props.data?.name;
   let country = props.data?.sys?.country;
   let time = dayOrNight(
