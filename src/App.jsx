@@ -9,7 +9,16 @@ function App() {
   const [data, setData] = useState(null);
 
   useEffect(() => {
-    getWeather("Detroit");
+    navigator.geolocation.getCurrentPosition((position) => {
+      // geolocation allowed
+      const lat = position.coords.latitude;
+      const lon = position.coords.longitude;
+      const coords = { lat, lon };
+      getWeather(coords);
+    }, () => {
+      // gelocation denied
+      getWeather("Detroit");
+    });
   }, []);
 
   function handleChange(event) {
@@ -27,7 +36,14 @@ function App() {
   async function getWeather(loc) {
     console.log("Calling API...")
     const key = apiKey.key;
-    const response = await fetch(`https://api.openweathermap.org/data/2.5/weather?q=${loc}&appid=${key}&units=imperial`)
+    // if loc is string, use q=loc, if loc is coords, use lat=loc.lat&lon=loc.lon
+    if (typeof loc === "string") {
+      loc = `q=${loc}`;
+    } else {
+      loc = `lat=${loc.lat}&lon=${loc.lon}`;
+    }
+    const url = `https://api.openweathermap.org/data/2.5/weather?${loc}&appid=${key}&units=imperial`;
+    const response = await fetch(url)
     const data = await response.json();
     setData(data);
     // determine if it's day or night and set styles
