@@ -45,6 +45,11 @@ function App() {
     const url = `https://api.openweathermap.org/data/2.5/weather?${loc}&appid=${key}&units=imperial`;
     const response = await fetch(url)
     const data = await response.json();
+    // if location not found, set data to "Error"
+    if (data.cod === "404") {
+      setData("Error");
+      return;
+    }
     setData(data);
     // determine if it's day or night and set styles
     let time = dayOrNight(Date.now(), data.sys.sunrise, data.sys.sunset);
@@ -92,7 +97,7 @@ function App() {
         </div>
       </div>
       <div className='content'>
-        {data === null ? null : <Weather data={data} />}
+        {data === null ? null : data === "Error" ? <h2>Location not found</h2> : <Weather data={data} />}
       </div>
     </div>
   );
