@@ -49,14 +49,14 @@ export default function Weather(props) {
       <i className={`wi ${conditionIcon(conditionCode, time)}`}></i>
       <p className="temp">
         {units === "imperial"
-          ? `${temp}°`
-          : `${fahrenheitToCelsius(temp)}°`}
+          ? `${temp}°F`
+          : `${fahrenheitToCelsius(temp)}°C`}
       </p>
       <p>{condition}</p>
       <p>
         {units === "imperial"
-          ? `Low: ${low}° | High: ${high}°`
-          : `Low: ${fahrenheitToCelsius(low)}° | High: ${fahrenheitToCelsius(high)}°`}
+          ? `Low: ${low}°F | High: ${high}°F`
+          : `Low: ${fahrenheitToCelsius(low)}°C | High: ${fahrenheitToCelsius(high)}°C`}
       </p>
       <p>Humidity: {humidity}%</p>
       <p>
