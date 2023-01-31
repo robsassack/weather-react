@@ -25,7 +25,8 @@ function App() {
     setLocation(event.target.value);
   }
 
-  function handleSubmit() {
+  function handleSubmit(e) {
+    e.preventDefault()
     if (!location) {
       return;
     }
@@ -84,17 +85,10 @@ function App() {
     <div className='App'>
       <div className='header'>
         <h1>Mini Weather</h1>
-        <div className='form'>
-          <input
-            type='text'
-            name='location'
-            id='location'
-            placeholder='Location'
-            onChange={handleChange}
-            value={location}
-          />
-          <button id='submit' onClick={handleSubmit}>Go</button>
-        </div>
+        <form className="form">
+          <input type="text" name="location" id="location" placeholder="Location" onChange={handleChange} value={location} />
+          <button id="submit" onClick={handleSubmit}>Go</button>
+        </form>
       </div>
       <div className='content'>
         {data === null ? null : data === "Error" ? <h2>Location not found</h2> : <Weather data={data} />}
