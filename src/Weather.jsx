@@ -3,15 +3,14 @@ import {
   dayOrNight,
   fahrenheitToCelsius,
   windDirection,
-  meterSecToMilesHour,
-  meterSecToKmHour,
+  mphToKmHr,
 } from "./conversions";
 import conditionIcon from "./conditionIcon";
 import "weather-icons/css/weather-icons.css";
 
 export default function Weather(props) {
   const [units, setUnits] = useState("imperial");
-  // console.log(props.data);
+  console.log(props.data);
   let name = props.data?.name;
   let country = props.data?.sys?.country;
   let time = dayOrNight(
@@ -61,8 +60,8 @@ export default function Weather(props) {
       <p>Humidity: {humidity}%</p>
       <p>
         {units === "imperial"
-          ? `Wind: ${windDeg} ${meterSecToMilesHour(windSpeed)} mph`
-          : `Wind: ${windDeg} ${meterSecToKmHour(windSpeed)} km/h`
+          ? `Wind: ${windDeg} ${windSpeed.toFixed(0)} mph`
+          : `Wind: ${windDeg} ${mphToKmHr(windSpeed)} km/h`
         }
       </p>
       <div className="temp-scale-chooser" onClick={changeUnits}>

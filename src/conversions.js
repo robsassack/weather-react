@@ -1,11 +1,8 @@
 export function fahrenheitToCelsius(fahrenheit) {
   return ((fahrenheit - 32) * 5 / 9).toFixed(0);
 }
-export function meterSecToMilesHour(meterSec) {
-  return (meterSec * 2.237).toFixed(0);
-}
-export function meterSecToKmHour(meterSec) {
-  return (meterSec * 3.6).toFixed(0);
+export function mphToKmHr(mph) {
+  return (mph * 1.609).toFixed(0);
 }
 export function dayOrNight(time, sunrise, sunset) {
   const currentTime = time / 1000;
