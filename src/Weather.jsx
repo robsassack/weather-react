@@ -10,7 +10,7 @@ import "weather-icons/css/weather-icons.css";
 
 export default function Weather(props) {
   const [units, setUnits] = useState("imperial");
-  console.log(props.data);
+  // console.log(props.data);
   let name = props.data?.name;
   let country = props.data?.sys?.country;
   let time = dayOrNight(
@@ -37,7 +37,7 @@ export default function Weather(props) {
     } else {
       setUnits("imperial");
     }
-  }
+  };
 
   return (
     <>
@@ -46,29 +46,25 @@ export default function Weather(props) {
         {country ? `, ${country}` : null}
       </h2>
       <i className={`wi ${conditionIcon(conditionCode, time)}`}></i>
-      <p className="temp">
-        {units === "imperial"
-          ? `${temp}°F`
-          : `${fahrenheitToCelsius(temp)}°C`}
+      <p className='temp'>
+        {units === "imperial" ? `${temp}°F` : `${fahrenheitToCelsius(temp)}°C`}
       </p>
       <p>{condition}</p>
       <p>
         {units === "imperial"
           ? `Low: ${low}°F | High: ${high}°F`
-          : `Low: ${fahrenheitToCelsius(low)}°C | High: ${fahrenheitToCelsius(high)}°C`}
+          : `Low: ${fahrenheitToCelsius(low)}°C | High: ${fahrenheitToCelsius(
+              high
+            )}°C`}
       </p>
       <p>Humidity: {humidity}%</p>
       <p>
         {units === "imperial"
           ? `Wind: ${windDeg} ${windSpeed.toFixed(0)} mph`
-          : `Wind: ${windDeg} ${mphToKmHr(windSpeed)} km/h`
-        }
+          : `Wind: ${windDeg} ${mphToKmHr(windSpeed)} km/h`}
       </p>
-      <div className="temp-scale-chooser" onClick={changeUnits}>
-        {units === "imperial" ?
-          "°F" :
-          "°C"
-        }
+      <div className='temp-scale-chooser' onClick={changeUnits}>
+        {units === "imperial" ? "°F" : "°C"}
       </div>
     </>
   );

@@ -11,6 +11,12 @@ body {
   align-items: center;
 }
 
+.App {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
 .header {
   padding-top: 10px;
   display: flex;
@@ -91,4 +97,9 @@ i, .temp {
 .temp-scale-chooser:hover {
   cursor: pointer;
   user-select: none;
+}
+
+.github-link {
+  color: black;
+  font-size: 2em;
 }
