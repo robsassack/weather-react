@@ -1,4 +1,4 @@
-export default function conditionIcon(condition, time) {
+export default function conditionIcon(condition: string, time: string) {
   const owmString = `wi-owm-${time}-${condition}`;
   switch (owmString) {
     case 'wi-owm-day-200': return 'wi-day-thunderstorm';

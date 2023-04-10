@@ -1,17 +1,17 @@
-export function fahrenheitToCelsius(fahrenheit) {
+export function fahrenheitToCelsius(fahrenheit: number) {
   return ((fahrenheit - 32) * 5 / 9).toFixed(0);
 }
-export function mphToKmHr(mph) {
+export function mphToKmHr(mph: number) {
   return (mph * 1.609).toFixed(0);
 }
-export function dayOrNight(time, sunrise, sunset) {
+export function dayOrNight(time: number, sunrise: number, sunset: number) {
   const currentTime = time / 1000;
   if (currentTime >= sunrise && currentTime <= sunset) {
     return 'day';
   }
   return 'night';
 }
-export function windDirection(degrees) {
+export function windDirection(degrees: number) {
   if (degrees >= 337.5 || degrees <= 22.5) {
     return 'N';
   } if (degrees > 22.5 && degrees <= 67.5) {

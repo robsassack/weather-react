@@ -8,7 +8,7 @@ import {
 import conditionIcon from "./conditionIcon";
 import "weather-icons/css/weather-icons.css";
 
-export default function Weather(props) {
+export default function Weather(props: any) {
   const [units, setUnits] = useState("imperial");
   // console.log(props.data);
   let name = props.data?.name;
