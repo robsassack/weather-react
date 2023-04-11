@@ -57,35 +57,41 @@ function App() {
     setData(data);
     // determine if it's day or night and set styles
     let time = dayOrNight(Date.now(), data.sys.sunrise, data.sys.sunset);
-    time === "day" ? setDayStyles() : setNightStyles();
+    time === "day" ? setStyles("day") : setStyles("night");
   }
 
-  function setDayStyles() {
-    document.querySelector("body").style.backgroundColor = "#B0E6E8";
-    document.querySelector("body").style.transition =
-      "background-color 1000ms linear";
-    document.body.style.color = "#000";
-    document.querySelector(".content").style.outline = "2px solid black";
-    document.querySelector("#location").style.border = "1px solid black";
-    document.querySelector("#submit").style.border = "1px solid black";
-    document.querySelector(".temp-scale-chooser").style.borderColor = "#000";
-    document.querySelector("#location").style.color = "#000";
-    document.querySelector("#submit").style.color = "#000";
-    document.querySelector(".github-link").style.color = "black";
-  }
-
-  function setNightStyles() {
-    document.querySelector("body").style.backgroundColor = "#101028";
-    document.querySelector("body").style.transition =
-      "background-color 1000ms linear";
-    document.body.style.color = "#fff";
-    document.querySelector(".content").style.outline = "2px solid white";
-    document.querySelector("#location").style.border = "1px solid white";
-    document.querySelector("#submit").style.border = "1px solid white";
-    document.querySelector(".temp-scale-chooser").style.borderColor = "#fff";
-    document.querySelector("#location").style.color = "#fff";
-    document.querySelector("#submit").style.color = "#fff";
-    document.querySelector(".github-link").style.color = "white";
+  function setStyles(time: string) {
+    const body = document.querySelector("body") as HTMLBodyElement;
+    const content = document.querySelector(".content") as HTMLElement;
+    const location = document.querySelector("#location") as HTMLElement;
+    const submit = document.querySelector("#submit") as HTMLElement;
+    const tempScaleChooser = document.querySelector(
+      ".temp-scale-chooser"
+    ) as HTMLElement;
+    const githubLink = document.querySelector(".github-link") as HTMLElement;
+    if (time === "day") {
+      body.style.backgroundColor = "#B0E6E8";
+      body.style.transition = "background-color 1000ms linear";
+      document.body.style.color = "#000";
+      content.style.outline = "2px solid black";
+      location.style.border = "1px solid black";
+      submit.style.border = "1px solid black";
+      tempScaleChooser.style.borderColor = "#000";
+      location.style.color = "#000";
+      submit.style.color = "#000";
+      githubLink.style.color = "black";
+    } else {
+      body.style.backgroundColor = "#101028";
+      body.style.transition = "background-color 1000ms linear";
+      document.body.style.color = "#fff";
+      content.style.outline = "2px solid white";
+      location.style.border = "1px solid white";
+      submit.style.border = "1px solid white";
+      tempScaleChooser.style.borderColor = "#fff";
+      location.style.color = "#fff";
+      submit.style.color = "#fff";
+      githubLink.style.color = "white";
+    }
   }
 
   return (
