@@ -6,7 +6,7 @@ import "./App.css";
 
 function App() {
   const [location, setLocation] = useState("");
-  const [data, setData] = useState(null);
+  const [data, setData] = useState('');
 
   useEffect(() => {
     navigator.geolocation.getCurrentPosition(
@@ -113,7 +113,7 @@ function App() {
         </form>
       </div>
       <div className='content'>
-        {data === null ? null : data === "Error" ? (
+        {data === '' ? '' : data === "Error" ? (
           <h2>Location not found</h2>
         ) : (
           <Weather data={data} />
