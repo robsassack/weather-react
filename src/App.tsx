@@ -69,28 +69,31 @@ function App() {
       ".temp-scale-chooser"
     ) as HTMLElement;
     const githubLink = document.querySelector(".github-link") as HTMLElement;
-    if (time === "day") {
-      body.style.backgroundColor = "#B0E6E8";
-      body.style.transition = "background-color 1000ms linear";
-      document.body.style.color = "#000";
-      content.style.outline = "2px solid black";
-      location.style.border = "1px solid black";
-      submit.style.border = "1px solid black";
-      tempScaleChooser.style.borderColor = "#000";
-      location.style.color = "#000";
-      submit.style.color = "#000";
-      githubLink.style.color = "black";
-    } else {
-      body.style.backgroundColor = "#101028";
-      body.style.transition = "background-color 1000ms linear";
-      document.body.style.color = "#fff";
-      content.style.outline = "2px solid white";
-      location.style.border = "1px solid white";
-      submit.style.border = "1px solid white";
-      tempScaleChooser.style.borderColor = "#fff";
-      location.style.color = "#fff";
-      submit.style.color = "#fff";
-      githubLink.style.color = "white";
+
+    if (body && content && location && submit && tempScaleChooser && githubLink) {
+      if (time === "day") {
+        body.style.backgroundColor = "#B0E6E8";
+        body.style.transition = "background-color 1000ms linear";
+        document.body.style.color = "#000";
+        content.style.outline = "2px solid black";
+        location.style.border = "1px solid black";
+        submit.style.border = "1px solid black";
+        tempScaleChooser.style.borderColor = "#000";
+        location.style.color = "#000";
+        submit.style.color = "#000";
+        githubLink.style.color = "black";
+      } else {
+        body.style.backgroundColor = "#101028";
+        body.style.transition = "background-color 1000ms linear";
+        document.body.style.color = "#fff";
+        content.style.outline = "2px solid white";
+        location.style.border = "1px solid white";
+        submit.style.border = "1px solid white";
+        tempScaleChooser.style.borderColor = "#fff";
+        location.style.color = "#fff";
+        submit.style.color = "#fff";
+        githubLink.style.color = "white";
+      }
     }
   }
 
