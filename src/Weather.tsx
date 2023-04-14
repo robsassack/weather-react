@@ -25,6 +25,7 @@ export default function Weather(props: any) {
   if (description) {
     condition += ` (${description})`;
   }
+  let feelsLike = props.data?.main?.feels_like.toFixed(0);
   let low = props.data?.main?.temp_min.toFixed(0);
   let high = props.data?.main?.temp_max.toFixed(0);
   let humidity = props.data?.main?.humidity;
@@ -50,6 +51,12 @@ export default function Weather(props: any) {
         {units === "imperial" ? `${temp}°F` : `${fahrenheitToCelsius(temp)}°C`}
       </p>
       <p>{condition}</p>
+      <p>
+        Feels like:
+        {units === "imperial"
+          ? ` ${feelsLike}°F`
+          : ` ${fahrenheitToCelsius(feelsLike)}°C`}
+      </p>
       <p>
         {units === "imperial"
           ? `Low: ${low}°F | High: ${high}°F`
