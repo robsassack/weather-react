@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import {
   dayOrNight,
   fahrenheitToCelsius,
@@ -9,7 +9,16 @@ import conditionIcon from "./conditionIcon";
 import "weather-icons/css/weather-icons.css";
 
 export default function Weather(props: any) {
-  const [units, setUnits] = useState("imperial");
+  const [units, setUnits] = useState("");
+
+  useEffect(() => {
+    if (localStorage.getItem("weather-units")) {
+      setUnits(localStorage.getItem("weather-units") as string);
+    } else {
+      setUnits("imperial");
+    }
+  }, []);
+
   // console.log(props.data);
   let name = props.data?.name;
   let country = props.data?.sys?.country;
@@ -34,8 +43,10 @@ export default function Weather(props: any) {
 
   const changeUnits = () => {
     if (units === "imperial") {
+      localStorage.setItem("weather-units", "metric");
       setUnits("metric");
     } else {
+      localStorage.setItem("weather-units", "imperial");
       setUnits("imperial");
     }
   };
