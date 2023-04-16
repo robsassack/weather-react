@@ -6,6 +6,7 @@ import "./App.css";
 
 function App() {
   const [location, setLocation] = useState("");
+  const [validLocation, setValidLocation] = useState(false);
   const [data, setData] = useState('');
 
   useEffect(() => {
@@ -23,6 +24,16 @@ function App() {
       }
     );
   }, []);
+
+  useEffect(() => {
+    let timer: any;
+    if (validLocation) {
+      timer = setInterval(() => {
+        // getWeather(location);
+      }, 3600000);
+    }
+    return () => clearInterval(timer);
+  }, [location, validLocation]);
 
   function handleChange(event: any) {
     setLocation(event.target.value);
@@ -51,9 +62,11 @@ function App() {
     const data = await response.json();
     // if location not found, set data to "Error"
     if (data.cod === "404") {
+      setValidLocation(false);
       setData("Error");
       return;
     }
+    setValidLocation(true);
     setData(data);
     // determine if it's day or night and set styles
     let time = dayOrNight(Date.now(), data.sys.sunrise, data.sys.sunset);
