@@ -6,6 +6,7 @@ import "./App.css";
 
 function App() {
   const [location, setLocation] = useState("");
+  const [locationName, setLocationName] = useState();
   const [validLocation, setValidLocation] = useState(false);
   const [data, setData] = useState('');
 
@@ -29,7 +30,8 @@ function App() {
     let timer: any;
     if (validLocation) {
       timer = setInterval(() => {
-        // getWeather(location);
+        // console.log(locationName);
+        getWeather(locationName);
       }, 3600000);
     }
     return () => clearInterval(timer);
@@ -52,6 +54,7 @@ function App() {
     console.log("Calling API...");
     const key = apiKey.key;
     // if loc is string, use q=loc, if loc is coords, use lat=loc.lat&lon=loc.lon
+    setLocationName(loc);
     if (typeof loc === "string") {
       loc = `q=${loc}`;
     } else {
