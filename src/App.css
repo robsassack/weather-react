@@ -99,6 +99,10 @@ i, .temp {
   user-select: none;
 }
 
+.temp-scale-chooser:active {
+  transform: scale(.95);
+}
+
 .github-link {
   color: black;
   font-size: 2em;
