@@ -37,6 +37,12 @@ function App() {
     return () => clearInterval(timer);
   }, [location, validLocation]);
 
+  useEffect(() => {
+    // determine if it's day or night and set styles
+    let time = dayOrNight(Date.now(), data.sys?.sunrise, data.sys?.sunset);
+    time === "day" ? setStyles("day") : setStyles("night");
+  }, [data]);
+
   function handleChange(event: any) {
     setLocation(event.target.value);
   }
@@ -71,9 +77,6 @@ function App() {
     }
     setValidLocation(true);
     setData(data);
-    // determine if it's day or night and set styles
-    let time = dayOrNight(Date.now(), data.sys.sunrise, data.sys.sunset);
-    time === "day" ? setStyles("day") : setStyles("night");
   }
 
   function setStyles(time: string) {
