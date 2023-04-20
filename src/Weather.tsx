@@ -51,6 +51,20 @@ export default function Weather(props: any) {
     }
   };
 
+  const sunTime = () => {
+    if (time === "day") {
+      // get sunset time
+      const date = new Date(props.data?.sys?.sunset * 1000);
+      const localizedTime = date.toLocaleTimeString();
+      return `Sunset: ${localizedTime}`;
+    } else {
+      // get sunrise time
+      const date = new Date(props.data?.sys?.sunrise * 1000);
+      const localizedTime = date.toLocaleTimeString();
+      return `Sunrise: ${localizedTime}`;
+    }
+  }
+
   return (
     <>
       <h2>
@@ -81,6 +95,7 @@ export default function Weather(props: any) {
           ? `Wind: ${windDeg} ${windSpeed.toFixed(0)} mph`
           : `Wind: ${windDeg} ${mphToKmHr(windSpeed)} km/h`}
       </p>
+      <p>{sunTime()}</p>
       <div className='temp-scale-chooser' onClick={changeUnits}>
         {units === "imperial" ? "°F" : "°C"}
       </div>
