@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react";
+import * as tzlookup from "tz-lookup";
 import {
   dayOrNight,
   fahrenheitToCelsius,
@@ -54,13 +55,19 @@ export default function Weather(props: any) {
   const sunTime = () => {
     if (time === "day") {
       // get sunset time
+      const timezone = tzlookup(props.data?.coord?.lat, props.data?.coord?.lon);
       const date = new Date(props.data?.sys?.sunset * 1000);
-      const localizedTime = date.toLocaleTimeString();
+      const localizedTime = date.toLocaleTimeString("en-US", {
+        timeZone: timezone,
+      });
       return `Sunset: ${localizedTime}`;
     } else {
       // get sunrise time
+      const timezone = tzlookup(props.data?.coord?.lat, props.data?.coord?.lon);
       const date = new Date(props.data?.sys?.sunrise * 1000);
-      const localizedTime = date.toLocaleTimeString();
+      const localizedTime = date.toLocaleTimeString("en-US", {
+        timeZone: timezone,
+      });
       return `Sunrise: ${localizedTime}`;
     }
   }
