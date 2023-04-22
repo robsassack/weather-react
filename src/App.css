@@ -107,3 +107,14 @@ i, .temp {
   color: black;
   font-size: 2em;
 }
+
+.sun-line {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+}
+
+.sun-icon {
+  font-size: 0.9em;
+  padding: 0;
+}

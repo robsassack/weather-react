@@ -60,7 +60,12 @@ export default function Weather(props: any) {
       const localizedTime = date.toLocaleTimeString("en-US", {
         timeZone: timezone,
       });
-      return `Sunset: ${localizedTime}`;
+      return (
+        <p className='sun-line'>
+          Sunset: {localizedTime}
+          <i className='fa-solid fa-moon sun-icon'></i>
+        </p>
+      );
     } else {
       // get sunrise time
       const timezone = tzlookup(props.data?.coord?.lat, props.data?.coord?.lon);
@@ -68,9 +73,14 @@ export default function Weather(props: any) {
       const localizedTime = date.toLocaleTimeString("en-US", {
         timeZone: timezone,
       });
-      return `Sunrise: ${localizedTime}`;
+      return (
+        <p className='sun-line'>
+          Sunrise: {localizedTime}
+          <i className='fa-solid fa-sun sun-icon'></i>
+        </p>
+      );
     }
-  }
+  };
 
   return (
     <>
@@ -102,7 +112,7 @@ export default function Weather(props: any) {
           ? `Wind: ${windDeg} ${windSpeed.toFixed(0)} mph`
           : `Wind: ${windDeg} ${mphToKmHr(windSpeed)} km/h`}
       </p>
-      <p>{sunTime()}</p>
+      {sunTime()}
       <div className='temp-scale-chooser' onClick={changeUnits}>
         {units === "imperial" ? "°F" : "°C"}
       </div>
