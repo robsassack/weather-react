@@ -108,13 +108,13 @@ i, .temp {
   font-size: 2em;
 }
 
-.sun-line {
+.condition-line {
   display: flex;
   align-items: center;
   gap: 7px;
 }
 
-.sun-icon {
+.condition-icon {
   font-size: 0.9em;
   padding: 0;
 }
