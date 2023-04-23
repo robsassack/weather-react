@@ -61,9 +61,9 @@ export default function Weather(props: any) {
         timeZone: timezone,
       });
       return (
-        <p className='sun-line'>
+        <p className='condition-line'>
           Sunset: {localizedTime}
-          <i className='fa-solid fa-moon sun-icon'></i>
+          <i className='fa-solid fa-moon condition-icon'></i>
         </p>
       );
     } else {
@@ -74,9 +74,9 @@ export default function Weather(props: any) {
         timeZone: timezone,
       });
       return (
-        <p className='sun-line'>
+        <p className='condition-line'>
           Sunrise: {localizedTime}
-          <i className='fa-solid fa-sun sun-icon'></i>
+          <i className='fa-solid fa-sun condition-icon'></i>
         </p>
       );
     }
@@ -93,11 +93,12 @@ export default function Weather(props: any) {
         {units === "imperial" ? `${temp}°F` : `${fahrenheitToCelsius(temp)}°C`}
       </p>
       <p>{condition}</p>
-      <p>
+      <p className='condition-line'>
         Feels like:
         {units === "imperial"
           ? ` ${feelsLike}°F`
           : ` ${fahrenheitToCelsius(feelsLike)}°C`}
+        <i className='fa-solid fa-temperature-half condition-icon'></i>
       </p>
       <p>
         {units === "imperial"
@@ -106,11 +107,15 @@ export default function Weather(props: any) {
               high
             )}°C`}
       </p>
-      <p>Humidity: {humidity}%</p>
-      <p>
+      <p className='condition-line'>
+        Humidity: {humidity}%
+        <i className='fa-solid fa-droplet condition-icon'></i>
+      </p>
+      <p className='condition-line'>
         {units === "imperial"
           ? `Wind: ${windDeg} ${windSpeed.toFixed(0)} mph`
           : `Wind: ${windDeg} ${mphToKmHr(windSpeed)} km/h`}
+        <i className='fa-solid fa-wind condition-icon'></i>
       </p>
       {sunTime()}
       <div className='temp-scale-chooser' onClick={changeUnits}>
