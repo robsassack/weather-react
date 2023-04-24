@@ -8,7 +8,7 @@ function App() {
   const [location, setLocation] = useState("");
   const [locationName, setLocationName] = useState();
   const [validLocation, setValidLocation] = useState(false);
-  const [data, setData] = useState('');
+  const [data, setData] = useState("");
 
   useEffect(() => {
     navigator.geolocation.getCurrentPosition(
@@ -89,7 +89,14 @@ function App() {
     ) as HTMLElement;
     const githubLink = document.querySelector(".github-link") as HTMLElement;
 
-    if (body && content && location && submit && tempScaleChooser && githubLink) {
+    if (
+      body &&
+      content &&
+      location &&
+      submit &&
+      tempScaleChooser &&
+      githubLink
+    ) {
       if (time === "day") {
         body.style.backgroundColor = "#B0E6E8";
         body.style.transition = "background-color 1000ms linear";
@@ -135,7 +142,9 @@ function App() {
         </form>
       </div>
       <div className='content'>
-        {data === '' ? '' : data === "Error" ? (
+        {data === "" ? (
+          ""
+        ) : data === "Error" ? (
           <h2>Location not found</h2>
         ) : (
           <Weather data={data} />
