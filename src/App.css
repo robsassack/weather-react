@@ -84,6 +84,14 @@ i, .temp {
   font-weight: 500;
 }
 
+#submit:hover {
+  background-color: #ffffff22;
+}
+
+#submit:active {
+  transform: scale(.95);
+}
+
 .temp-scale-chooser {
   text-align: center;
   border: 1px solid black;
@@ -97,6 +105,7 @@ i, .temp {
 .temp-scale-chooser:hover {
   cursor: pointer;
   user-select: none;
+  background-color: #ffffff22;
 }
 
 .temp-scale-chooser:active {
