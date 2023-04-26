@@ -119,7 +119,7 @@ export default function Weather(props: any) {
       </p>
       {sunTime()}
       <div className='temp-scale-chooser' onClick={changeUnits}>
-        {units === "imperial" ? "°F" : "°C"}
+        <strong>{units === "imperial" ? "°F" : "°C"}</strong>
       </div>
     </>
   );
