@@ -29,6 +29,7 @@ body {
 
 h1 {
   font-size: 2.5em;
+  user-select: none;
 }
 
 .content {
@@ -69,6 +70,7 @@ i, .temp {
   border: 1px solid black;
   padding: 5px 10px;
   font-weight: 500;
+  user-select: none;
 }
 
 #location::placeholder {
@@ -82,6 +84,7 @@ i, .temp {
   padding: 5px 10px;
   cursor: pointer;
   font-weight: 500;
+  user-select: none;
 }
 
 #submit:hover {
@@ -100,6 +103,7 @@ i, .temp {
   border-radius: 5px;
   margin-top: 5px;
   grid-column: 1 / 3;
+  user-select: none;
 }
 
 .temp-scale-chooser:hover {
